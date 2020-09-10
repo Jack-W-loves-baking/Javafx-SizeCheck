@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Package-Name: itemsizecheck
+Class-Name: itemsizecheck.ItemSizeCheck.java
+Main-Class: itemsizecheck.ItemSizeCheck

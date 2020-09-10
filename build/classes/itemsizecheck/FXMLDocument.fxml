@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="1200.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itemsizecheck.FXMLDocumentController">
+    <children>
+      <AnchorPane fx:id="measurePane" layoutX="383.0" prefHeight="543.0" prefWidth="250.0" style="-fx-background-color: #a8aea0;">
+         <children>
+            <ImageView fitHeight="26.0" fitWidth="38.0" layoutX="14.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resource/history.png" />
+               </image>
+            </ImageView>
+            <Button id="checkButton" fx:id="checkButton" layoutX="63.0" layoutY="435.0" mnemonicParsing="false" onAction="#checkSize" prefHeight="39.0" prefWidth="110.0" style="-fx-background-color: #f2ede9;" text="CHECK">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="38.0" layoutY="79.0" prefHeight="39.0" prefWidth="198.0" text="Length: (mm)">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="22.0" />
+               </font>
+            </Label>
+            <TextField id="lengthValue" fx:id="lengthInput" layoutX="39.0" layoutY="115.0" prefHeight="26.0" prefWidth="158.0" />
+            <TextField id="widthValue" fx:id="widthInput" layoutX="39.0" layoutY="230.0" prefHeight="26.0" prefWidth="158.0" />
+            <TextField id="heightValue" fx:id="heightInput" layoutX="39.0" layoutY="350.0" prefHeight="26.0" prefWidth="158.0" />
+            <Label layoutX="39.0" layoutY="195.0" prefHeight="39.0" prefWidth="198.0" text="Width: (mm)">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="311.0" prefHeight="39.0" prefWidth="198.0" text="Height: (mm)">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lengthWarning" layoutX="39.0" layoutY="145.0" prefHeight="26.0" prefWidth="181.0" text="Numbers ONLY!" textFill="RED" visible="false">
+               <font>
+                  <Font name="Eras Demi ITC" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="widthWarning" layoutX="39.0" layoutY="262.0" prefHeight="26.0" prefWidth="181.0" text="Numbers ONLY!" textFill="RED" visible="false">
+               <font>
+                  <Font name="Eras Demi ITC" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="heightWarning" layoutX="39.0" layoutY="383.0" prefHeight="26.0" prefWidth="181.0" text="Numbers ONLY!" textFill="RED" visible="false">
+               <font>
+                  <Font name="Eras Demi ITC" size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="32.0" fitWidth="26.0" layoutX="217.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resource/exit.png" />
+               </image>
+            </ImageView>
+            <ToggleButton fx:id="history" layoutX="32.0" layoutY="506.0" mnemonicParsing="false" onAction="#hideShowHistory" style="-fx-background-color: transparent;" text="Show History">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="12.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </AnchorPane>
+      <Button layoutX="596.0" minWidth="38.0" mnemonicParsing="false" onAction="#exit" prefHeight="39.0" prefWidth="38.0" style="-fx-background-color: transparent;" />
+      <AnchorPane fx:id="historyPane" layoutY="500.0" prefHeight="543.0" prefWidth="382.0" style="-fx-background-color: #FFFFFF;" visible="false">
+         <children>
+            <TableView fx:id="fhistories" prefHeight="491.0" prefWidth="388.0">
+              <columns>
+                <TableColumn fx:id="fid" prefWidth="51.99997043609619" text="ID" />
+                <TableColumn fx:id="flength" prefWidth="79.99996948242188" text="Length" />
+                  <TableColumn fx:id="fwidth" prefWidth="82.39999389648438" text="Width" />
+                  <TableColumn fx:id="fheight" prefWidth="71.20002746582031" text="Height" />
+                  <TableColumn fx:id="fresult" prefWidth="100.79998779296875" text="Result" />
+              </columns>
+            </TableView>
+            <Button layoutX="53.0" layoutY="497.0" mnemonicParsing="false" onAction="#exportCSV" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #a8aea0; -fx-border-radius: 50;" text="EXPORT RESULT">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="198.0" layoutY="497.0" mnemonicParsing="false" onAction="#clearAll" prefHeight="39.0" prefWidth="108.0" style="-fx-background-color: #a8aea0; -fx-border-radius: 50;" text="CLEAR">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <StackPane fx:id="stackPane" layoutX="633.0" prefHeight="543.0" prefWidth="265.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;">
+         <children>
+            <AnchorPane fx:id="noresultPane" prefHeight="543.0" prefWidth="265.0" style="-fx-background-color: transparent;" visible="false">
+               <children>
+                  <AnchorPane layoutX="22.0" layoutY="66.0" prefHeight="86.0" prefWidth="198.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="21.0" text="Oops!">
+                           <font>
+                              <Font name="System Bold" size="39.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="6.0" layoutY="163.0" prefHeight="200.0" prefWidth="230.0">
+                     <children>
+                        <Label layoutX="11.0" layoutY="36.0" text="We currently do have suitable ">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="11.0" layoutY="82.0" prefHeight="63.0" prefWidth="218.0" text="However, you could please click">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="12.0" layoutY="55.0" text="size of bag for your box.">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="12.0" layoutY="100.0" prefHeight="63.0" prefWidth="230.0" text="the button below for more info.">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Button layoutX="66.0" layoutY="432.0" mnemonicParsing="false" onAction="#linkRedirect" prefHeight="39.0" prefWidth="110.0" style="-fx-label-padding: 8; -fx-border-radius: 50; -fx-background-color: #a8aea0;" text="BUY NOW">
+                     <font>
+                        <Font name="Franklin Gothic Demi Cond" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="resultPane" prefHeight="543.0" prefWidth="265.0" style="-fx-background-color: transparent;" visible="false">
+               <children>
+                  <AnchorPane layoutX="26.0" layoutY="66.0" prefHeight="86.0" prefWidth="198.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="21.0" text="We're a great fit!">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="6.0" layoutY="163.0" prefHeight="288.0" prefWidth="230.0">
+                     <children>
+                        <Label layoutX="18.0" layoutY="10.0" text="The most suitable">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="16.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutX="17.0" layoutY="61.0" prefHeight="36.0" prefWidth="195.0" style="-fx-background-radius: 50; -fx-background-color: #FFFFFF;">
+                           <children>
+                              <Label fx:id="bagName" layoutX="59.0" layoutY="6.0" text="Extra Small">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi Cond" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <ImageView fx:id="BagImage" fitHeight="171.0" fitWidth="158.0" layoutX="62.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pic/Large.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="19.0" layoutY="27.0" text="comPOST Pack is size">
+                           <font>
+                              <Font name="Franklin Gothic Demi Cond" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Button layoutX="77.0" layoutY="463.0" mnemonicParsing="false" onAction="#linkRedirect" prefHeight="39.0" prefWidth="110.0" style="-fx-label-padding: 8; -fx-border-radius: 50; -fx-background-color: #a8aea0;" text="BUY NOW">
+                     <font>
+                        <Font name="Franklin Gothic Demi Cond" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+      <AnchorPane fx:id="demoPane" layoutX="633.0" prefHeight="543.0" prefWidth="299.0" style="-fx-background-color: #a8aea0;">
+         <children>
+            <AnchorPane layoutY="54.0" prefHeight="461.0" prefWidth="274.0">
+               <children>
+                  <Line id="l1" fx:id="l1" endX="63.0" endY="-9.292877197265625" layoutX="191.0" layoutY="59.0" startX="-110.70709228515625" startY="-9.292877197265625" />
+                  <Line id="w1" fx:id="w1" endX="-56.20709228515625" endY="-23.792877197265625" layoutX="136.0" layoutY="74.0" startX="-100.0" />
+                  <Line id="w2" fx:id="w2" endX="-37.4000244140625" endY="-33.19999694824219" layoutX="291.0" layoutY="84.0" startX="-80.5" startY="-9.792877197265625" />
+                  <Line id="h1" fx:id="h1" endX="-100.0" endY="176.39996337890625" layoutX="180.0" layoutY="199.0" startX="-100.0" startY="-147.29998779296875" style="-fx-stroke-dash-array: 10;" />
+                  <Line id="h2" fx:id="h2" endX="-100.0" endY="176.39996337890625" layoutX="137.0" layoutY="222.0" startX="-101.20709228515625" startY="-145.79287719726562" />
+                  <Line id="h4" fx:id="h4" endX="42.5" endY="-166.79287719726562" layoutX="167.0" layoutY="242.0" startX="43.5" startY="159.20712280273438" />
+                  <Line id="l2" fx:id="l2" endX="63.0" endY="-9.292877197265625" layoutX="148.0" layoutY="84.0" startX="-110.70709228515625" startY="-9.292877197265625" />
+                  <Line id="h3" fx:id="h3" endX="-110.5" endY="-406.7928771972656" layoutX="364.0" layoutY="459.0" startX="-108.39288330078125" startY="-84.01419067382812" />
+                  <Line id="l3" fx:id="l3" endX="-111.79290771484375" endY="177.19290161132812" layoutX="193.0" layoutY="199.0" startX="59.0" startY="177.19290161132812" style="-fx-stroke-dash-array: 10;" />
+                  <Line id="l4" fx:id="l4" endX="63.0" endY="-9.292877197265625" layoutX="148.0" layoutY="410.0" startX="-110.70709228515625" startY="-9.292877197265625" />
+                  <Line id="w3" fx:id="w3" endX="-98.5" endY="160.89999389648438" layoutX="135.0" layoutY="238.0" startX="-54.5" startY="137.89999389648438" style="-fx-stroke-dash-array: 10;" />
+                  <Line id="w4" fx:id="w4" endX="61.314208984375" endY="-94.30709838867188" layoutX="195.0" layoutY="470.0" startX="15.0" startY="-69.29287719726562" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>
